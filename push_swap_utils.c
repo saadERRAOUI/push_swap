@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/16 00:38:08 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:51:42 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ int	ft_atoi_check(const char *str, int *number)
 
 t_stack	*ft_lstlast(t_stack *st)
 {
+	t_stack *tmp;
+	
 	if (!st)
 		return (NULL);
-	while(st->next)
+	tmp = st;
+	while(st->next && st->next != tmp)
 		st = st->next;
 	return (st);
 }
@@ -84,7 +87,10 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	}
 	tmp = ft_lstlast(*lst);
 	new->prev = tmp;
+	new->next = (*lst);
 	tmp->next = new;
+	(*lst)->prev = new;
+	new->index = tmp->index + 1;
 }
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
@@ -96,6 +102,6 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 		*lst = new;
 		return ;
 	}
-	new->next = *lst;
-	*lst = new;
+	ft_lstadd_back(lst, new);
+	rev_rot_stack((*lst), 'a');
 }

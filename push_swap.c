@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/16 00:39:40 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:49:36 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 	!Note : the first arg should be at the top of the stack
 	!Note : check if hanlde case -0 +0 0
 */
+
+
+// void	ft_sort_small(t_stack *a, int len)
+// {
+
+// }
 
 static t_stack *fill_stack(int ac, char **av)
 {
@@ -86,20 +92,36 @@ static int	validate_stack(char **av, int ac)
 int main(int ac, char **av)
 {
 	t_stack *a;
-	int i = 0;	
+	t_stack *tmp;
+	int nbr, i = 0;
 	if (ac >= 1)
 	{
 		if (validate_stack(av, ac) && check_occurrence(av))
 		{
-			//call sorting functin depends on ac
-			// printf("Success\n");
 			a = fill_stack(ac, av);
-			while (++i < ac)
+			tmp = a;
+			//printf("length : %i\n", a->prev->index + 1);
+			// if (s->prev->index <= 2)
+			// 	ft_sort_small(a, s->prev->index);
+			printf("BEFORE\n\n");
+			while(++i < ac)
 			{
-				printf("content->%i, index->%i, next->%p, prev->%p\n", a->content, a->index, a->next, a->prev);
+				printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
+				tmp = tmp->next;
+			}
+			// t_stack *node = malloc(sizeof(t_stack));
+			// node->content = 23;
+			// ft_lstadd_front(&a, node);
+			a = rm_stack(&a, &nbr);
+			//printf("Removed -> content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
+			i = 0;
+			printf("AFTER\n\n");
+			while(++i < ac)
+			{
+				printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", a->content, a->index, a, a->prev, a->next);
 				a = a->next;
 			}
-			system("leaks push_swap");
+			printf("\n\nNUMBER : %d\n", nbr);
 		}
 		else
 			printf("Error\n");

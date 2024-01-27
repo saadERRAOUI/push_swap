@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/16 00:38:45 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/17 15:48:22 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,14 @@ typedef struct		s_pile
 }					t_pile;
 
 
-int			ft_atoi_check(const char *str, int *number);
-int			ft_strcmp(const char *s1, const char *s2);
-void		ft_lstadd_back(t_stack **lst, t_stack *new);
-void		ft_lstadd_front(t_stack **lst, t_stack *new);
-t_stack		*ft_lstlast(t_stack *st);
+int			ft_atoi_check(const char *, int *);
+int			ft_strcmp(const char *, const char *);
+void		ft_lstadd_back(t_stack **, t_stack *);
+void		ft_lstadd_front(t_stack **, t_stack *);
+void		swap_stack(t_stack *, char);
+void		rot_stack(t_stack *, char);
+void		rev_rot_stack(t_stack *s, char);
+t_stack		*rm_stack(t_stack **, int *);
+t_stack		*ft_lstlast(t_stack *);
 
 #endif
