@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/17 15:54:53 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/28 04:01:23 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,55 +65,69 @@ void	rev_rot_stack(t_stack *s, char c)
 }
 
 //remove node from the stack
-/*
-t_stack	*rm_stack(t_stack **s, int *content)
+
+void	rm_stack(t_stack **s, int *content)
 {
-	t_stack *tmp;
-	int		i;
+	t_stack *_prev;
+	t_stack *_curr;
+	//int		i;
 
 	if (!s || !(*s))
-		return (NULL);
-	tmp = (*s);
-	(*content) = tmp->content;
-	(*s) = (*s)->next;
-	free(tmp);
-	(*s)->prev = ft_lstlast(*s);
-	tmp = *s;
-	i = 0;
-	while (((*s)) && (*s)->next != tmp)
-	{
-		(*s)->index = i;
-		(*s) = (*s)->next;
-		i++;
-	}
-	return (*s);
-}*/
+		return ;
+	// tmp = (*s);
+	// (*content) = tmp->content;
+	// (*s) = (*s)->next;
+	// printf("\nAddress__ == %p\n", *s);
+	// free(tmp);
+	// // tmp->next = NULL;
+	// // tmp->prev = NULL;
+	// // tmp = NULL;
+	// (*s)->prev = ft_lstlast(*s);
+	// tmp = *s;
+	// i = 0;
+	// while (((*s)) && (*s)->next != tmp)
+	// {
+	// 	(*s)->index = i;
+	// 	(*s) = (*s)->next;
+	// 	i++;
+	// }
+	*content = (*s)->content;
+	_curr = *s;
+	_prev = (*s)->prev;
+	*s = (*s)->next;
 
-t_stack *rm_stack(t_stack **s, int *content)
-{
-    if (!s || !(*s))
-        return NULL;
-
-    t_stack *tmp = (*s);
-    (*content) = tmp->content;
-
-    if ((*s)->next != NULL) {
-        (*s) = (*s)->next;
-        free(tmp);
-        (*s)->prev = NULL;
-
-        // Update indices
-        t_stack *current = (*s);
-        int i = 0;
-        while (current->next != (*s)) {
-            current->index = i;
-            current = current->next;
-            i++;
-        }
-    } else {
-        // Only one node in the list
-        free(tmp);
-        (*s) = NULL;
-    }
-	return (*s);
+	
+	_prev->next = *s;
+	(*s)->prev = _prev;
+	free(_curr);
+	//return (*s);
 }
+
+// t_stack *rm_stack(t_stack **s, int *content)
+// {
+//     if (!s || !(*s))
+//         return NULL;
+
+//     t_stack *tmp = (*s);
+//     (*content) = tmp->content;
+
+//     if ((*s)->next != NULL) {
+//         (*s) = (*s)->next;
+//         free(tmp);
+//         (*s)->prev = NULL;
+
+//         // Update indices
+//         t_stack *current = (*s);
+//         int i = 0;
+//         while (current->next != (*s)) {
+//             current->index = i;
+//             current = current->next;
+//             i++;
+//         }
+//     } else {
+//         // Only one node in the list
+//         free(tmp);
+//         (*s) = NULL;
+//     }
+// 	return (*s);
+// }

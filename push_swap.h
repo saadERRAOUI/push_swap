@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/17 15:48:22 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/28 04:01:32 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		ft_lstadd_front(t_stack **, t_stack *);
 void		swap_stack(t_stack *, char);
 void		rot_stack(t_stack *, char);
 void		rev_rot_stack(t_stack *s, char);
-t_stack		*rm_stack(t_stack **, int *);
+void		rm_stack(t_stack **, int *);
 t_stack		*ft_lstlast(t_stack *);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/17 15:49:36 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/28 03:59:07 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static t_stack *fill_stack(int ac, char **av)
 	t_stack *node;
 
 	i = 0;
+	a = NULL;
 	while (++i < ac)
 	{
 		ft_atoi_check(av[i], &nbr);
@@ -77,7 +78,6 @@ static int	check_occurrence(char **av)
 	return (1);
 }
 
-
 static int	validate_stack(char **av, int ac)
 {
 	int i;
@@ -91,9 +91,9 @@ static int	validate_stack(char **av, int ac)
 
 int main(int ac, char **av)
 {
-	t_stack *a;
-	t_stack *tmp;
-	int nbr, i = 0;
+	t_stack *a/*= malloc(sizeof(t_stack))*/;
+	t_stack *tmp/* = malloc(sizeof(t_stack))*/;
+	int nbr = 0, i = 0;
 	if (ac >= 1)
 	{
 		if (validate_stack(av, ac) && check_occurrence(av))
@@ -112,10 +112,12 @@ int main(int ac, char **av)
 			// t_stack *node = malloc(sizeof(t_stack));
 			// node->content = 23;
 			// ft_lstadd_front(&a, node);
-			a = rm_stack(&a, &nbr);
+			rm_stack(&a, &nbr);
+			//printf("\ == %p\n", a);
 			//printf("Removed -> content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
 			i = 0;
 			printf("AFTER\n\n");
+			tmp = a;
 			while(++i < ac)
 			{
 				printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", a->content, a->index, a, a->prev, a->next);
