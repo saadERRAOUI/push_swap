@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/28 03:59:07 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:24:48 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,39 +91,33 @@ static int	validate_stack(char **av, int ac)
 
 int main(int ac, char **av)
 {
-	t_stack *a/*= malloc(sizeof(t_stack))*/;
-	t_stack *tmp/* = malloc(sizeof(t_stack))*/;
-	int nbr = 0, i = 0;
+	t_stack *a;
+	t_stack *b = NULL;
+
 	if (ac >= 1)
 	{
 		if (validate_stack(av, ac) && check_occurrence(av))
 		{
 			a = fill_stack(ac, av);
-			tmp = a;
-			//printf("length : %i\n", a->prev->index + 1);
-			// if (s->prev->index <= 2)
-			// 	ft_sort_small(a, s->prev->index);
-			printf("BEFORE\n\n");
-			while(++i < ac)
-			{
-				printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
-				tmp = tmp->next;
-			}
-			// t_stack *node = malloc(sizeof(t_stack));
-			// node->content = 23;
-			// ft_lstadd_front(&a, node);
-			rm_stack(&a, &nbr);
-			//printf("\ == %p\n", a);
-			//printf("Removed -> content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
-			i = 0;
-			printf("AFTER\n\n");
-			tmp = a;
-			while(++i < ac)
-			{
-				printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", a->content, a->index, a, a->prev, a->next);
-				a = a->next;
-			}
-			printf("\n\nNUMBER : %d\n", nbr);
+			push_stack(&a, &b, 'b');
+			push_stack(&a, &b, 'b');
+			print_stack(a, 'a');
+			print_stack(b, 'b');
+			
+			printf("\n*********************\n");
+			rot_stack_orch(a, b, 'r');
+			print_stack(a, 'a');
+			print_stack(b, 'b');
+			
+			printf("\n*********************\n");
+			rev_rot_stack_orch(a, b, 'r');
+			print_stack(a, 'a');
+			print_stack(b, 'b');
+			
+			printf("\n*********************\n");
+			swap_stack_orch(a, b, 's');
+			print_stack(a, 'a');
+			print_stack(b, 'b');
 		}
 		else
 			printf("Error\n");

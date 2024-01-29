@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/17 13:51:42 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/01/29 01:14:20 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		return ;
 	if (!(*lst))
 	{
+		new->prev = new;
+		new->next = new;
 		(*lst) = new;
 		return ;
 	}
@@ -99,9 +101,12 @@ void	ft_lstadd_front(t_stack **lst, t_stack *new)
 		return ;
 	if (!(*lst))
 	{
+		new->prev = new;
+		new->next = new;
+		new->index = 0;
 		*lst = new;
 		return ;
 	}
 	ft_lstadd_back(lst, new);
-	rev_rot_stack((*lst), 'a');
+	rev_rot_stack((*lst));
 }
