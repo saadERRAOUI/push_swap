@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/29 01:24:48 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/02 00:54:09 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,76 @@
 	!Note : check if hanlde case -0 +0 0
 */
 
+static int get_max_index(t_stack *a)
+{
+	int 	max_i;
+	int		max_c;
+	int 	flag;
+	t_stack *tmp;
+	
+	tmp = a;
+	flag = 0;
+	max_c = a->content;
+	max_i = a->index;
+	while ((a->next != tmp && !flag) || (a != tmp && flag))
+	{
+		if (a->content > max_c)
+		{
+			max_c = a->content;
+			max_i = a->index;
+		}
+		a = a->next;
+		flag = 1;
+	}
+	return (max_i);
+}
 
-// void	ft_sort_small(t_stack *a, int len)
-// {
+static int	ft_is_sorted(t_stack *s)
+{
+	t_stack *tmp;
+	t_stack *needle;
+	int		flag = 0;
 
-// }
+	tmp = s;
+	while (
+		(tmp->next && tmp->next != s && !flag) ||
+		(tmp && tmp != s && flag)
+	)
+	{
+		needle = s;
+		while(needle != tmp)
+		{
+			//printf("__NDL %i -> __TMP %i\n", needle->content, tmp->content);
+			if (needle->content > tmp->content)
+				return (0);
+			needle = needle->next;
+		}
+		tmp = tmp->next;
+		flag = 1;
+	}
+	return (1);
+}
+
+static void	ft_sort_small(t_stack *a, int len)
+{
+	int max_index;
+	
+	if (len == 2)
+	{
+		swap_stack_orch(a, NULL, 'a');
+		exit(0);
+	}
+	else if (len == 3)
+	{
+		max_index = get_max_index(a);
+		if (max_index == 1)
+			rev_rot_stack_orch(a, NULL, 'a');
+		else if (max_index == 0)
+			rot_stack_orch(a, NULL, 'a');
+		swap_stack_orch(a, NULL, 'a');
+		exit(0);
+	}
+}
 
 static t_stack *fill_stack(int ac, char **av)
 {
@@ -49,7 +114,6 @@ static t_stack *fill_stack(int ac, char **av)
 		(*node) = (t_stack) {nbr, i - 1, NULL, NULL};
 		ft_lstadd_back(&a, node);
 	}
-	//Todo : Create circular one !!Important
 	tmp = ft_lstlast(a);
 	a->prev = tmp;
 	tmp->next = a;
@@ -96,28 +160,38 @@ int main(int ac, char **av)
 
 	if (ac >= 1)
 	{
+		// printf("__VALID %i\n", validate_stack(av, ac));
+		// printf("__OCC %i\n", check_occurrence(av));
 		if (validate_stack(av, ac) && check_occurrence(av))
 		{
 			a = fill_stack(ac, av);
-			push_stack(&a, &b, 'b');
-			push_stack(&a, &b, 'b');
-			print_stack(a, 'a');
-			print_stack(b, 'b');
+			(void)b;
+			if (ft_is_sorted(a))
+				return(printf("ALL GOOD\n"), 1);
+			if (a->prev->index <= 2)
+			{
+				ft_sort_small(a, a->prev->index + 1);
+				return (1);
+			}
+			// push_stack(&a, &b, 'b');
+			// push_stack(&a, &b, 'b');
+			// print_stack(a, 'a');
+			// print_stack(b, 'b');
 			
-			printf("\n*********************\n");
-			rot_stack_orch(a, b, 'r');
-			print_stack(a, 'a');
-			print_stack(b, 'b');
+			// printf("\n*********************\n");
+			// rot_stack_orch(a, b, 'r');
+			// print_stack(a, 'a');
+			// print_stack(b, 'b');
 			
-			printf("\n*********************\n");
-			rev_rot_stack_orch(a, b, 'r');
-			print_stack(a, 'a');
-			print_stack(b, 'b');
+			// printf("\n*********************\n");
+			// rev_rot_stack_orch(a, b, 'r');
+			// print_stack(a, 'a');
+			// print_stack(b, 'b');
 			
-			printf("\n*********************\n");
-			swap_stack_orch(a, b, 's');
-			print_stack(a, 'a');
-			print_stack(b, 'b');
+			// printf("\n*********************\n");
+			// swap_stack_orch(a, b, 's');
+			// print_stack(a, 'a');
+			// print_stack(b, 'b');
 		}
 		else
 			printf("Error\n");
