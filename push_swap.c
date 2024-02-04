@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/02 00:54:09 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:28:44 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ static int	ft_is_sorted(t_stack *s)
 	}
 	return (1);
 }
+static void ft_sort_medium(t_stack *a, t_stack *b, int len, int flag); //!to__remove
 
-static void	ft_sort_small(t_stack *a, int len)
+static void	ft_sort_small(t_stack *a, t_stack *b, int len)
 {
 	int max_index;
 	
+	if (len > 3)
+		ft_sort_medium(a, b, len, 1);
 	if (len == 2)
 	{
 		swap_stack_orch(a, NULL, 'a');
@@ -93,9 +96,49 @@ static void	ft_sort_small(t_stack *a, int len)
 		else if (max_index == 0)
 			rot_stack_orch(a, NULL, 'a');
 		swap_stack_orch(a, NULL, 'a');
-		exit(0);
+		return ;
 	}
 }
+
+static void ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
+{
+	int max_index;
+	
+	max_index = get_max_index(a);
+	if (len == 4 || (flag == 0 && len == 5))
+	{
+		if (max_index == 3 || max_index == 2)
+			rev_rot_stack_orch(a, NULL, 'a');
+		if (max_index == 2)
+			rev_rot_stack_orch(a, NULL, 'a');
+		if (max_index == 1)
+			swap_stack_orch(a, NULL, 'a');
+		push_stack(&a, &b, 'a');
+	}
+	else if (len == 5)
+	{
+		if (max_index == 4 || max_index == 3 || max_index == 2)
+			rev_rot_stack_orch(a, NULL, 'a');
+		if (max_index == 3 || max_index == 2)
+			rev_rot_stack_orch(a, NULL, 'a');
+		if (max_index == 2)
+			rev_rot_stack_orch(a, NULL, 'a');
+		if (max_index == 1)
+			swap_stack_orch(a, NULL, 'a');
+		push_stack(&a, &b, 'a');
+		ft_sort_medium(a, b, 5, 0);
+	}
+	ft_sort_small(a, b, 3);
+	push_stack(&b, &a, 'b');
+	rot_stack_orch(a, b, 'a');
+	if (len == 5)
+	{
+		push_stack(&b, &a, 'b');
+		rot_stack_orch(a, b, 'a');
+	}
+	exit(0);
+}
+
 
 static t_stack *fill_stack(int ac, char **av)
 {
@@ -168,9 +211,10 @@ int main(int ac, char **av)
 			(void)b;
 			if (ft_is_sorted(a))
 				return(printf("ALL GOOD\n"), 1);
-			if (a->prev->index <= 2)
+			if (a->prev->index <= 4)
 			{
-				ft_sort_small(a, a->prev->index + 1);
+				//print_stack(a, 'a');
+				ft_sort_small(a, b, a->prev->index + 1);
 				return (1);
 			}
 			// push_stack(&a, &b, 'b');

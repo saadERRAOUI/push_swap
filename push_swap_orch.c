@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:47:35 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/29 01:22:57 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/04 23:14:42 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	swap_stack_orch(t_stack *a, t_stack *b, char c)
 	else
 		swap_stack(b);
 }
-
+/* //! ********************************************** /
+	!TO REMOVE 
+*/ //! ********************************************** /
 void	print_stack(t_stack *s, char c)
 {
 	t_stack *tmp;
