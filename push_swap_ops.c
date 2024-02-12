@@ -6,26 +6,24 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/11 02:09:04 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/12 23:41:12 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//pb pa
 void	push_stack(t_stack **s, t_stack **d, char c)
 {
 	int		nbr;
 	t_stack	*tmp;
-	
-	printf("p%c\n", c);//! change to ft_printf();
+
+	ft_printf("p%c\n", c);
 	rm_stack(s, &nbr);
 	tmp = (t_stack *)malloc(sizeof(t_stack));
 	tmp->content = nbr;
 	ft_lstadd_front(d, tmp);
 }
 
-//sa sb ss
 void	swap_stack(t_stack *s)
 {
 	int	tmp;
@@ -35,14 +33,13 @@ void	swap_stack(t_stack *s)
 	s->next->content = tmp;
 }
 
-//ra rb rr
 void	rot_stack(t_stack *s)
 {
 	t_stack	*tmp;
 	int		t;
-	
+
 	tmp = s;
-	while(s->next && s->next != tmp)
+	while (s->next && s->next != tmp)
 	{
 		t = s->next->content;
 		s->next->content = s->content;
@@ -51,14 +48,13 @@ void	rot_stack(t_stack *s)
 	}
 }
 
-//rra rrb rrr
 void	rev_rot_stack(t_stack *s)
 {
 	t_stack	*tmp;
 	int		t;
-	
+
 	tmp = s;
-	while(s->prev && s->prev != tmp)
+	while (s->prev && s->prev != tmp)
 	{
 		t = s->prev->content;
 		s->prev->content = s->content;
@@ -67,37 +63,30 @@ void	rev_rot_stack(t_stack *s)
 	}
 }
 
-//remove node from the stack
 void	rm_stack(t_stack **s, int *content)
 {
-	t_stack *_prev;
-	t_stack *_curr;
-	t_stack *tmp;
+	t_stack	*_prev;
+	t_stack	*_curr;
+	t_stack	*tmp;
 	int		index;
 
 	if (!s || !(*s))
 		return ;
-	if ((*s)->prev->index == 0)
-	{
-		_curr = (*s);
-		*content = (*s)->content;
-		free(_curr);
-		(*s) = NULL;
-		return ;
-	}
 	index = 0;
 	*content = (*s)->content;
 	_curr = *s;
-	_prev = (*s)->prev;
-	*s = (*s)->next;
-	_prev->next = *s;
-	(*s)->prev = _prev;
-	(*s)->index = index;
-	tmp = (*s)->next;
-	while (tmp && tmp->index != 0)
+	if ((*s)->prev->index != 0)
 	{
-		tmp->index = ++index;
-		tmp = tmp->next;
+		_prev = (*s)->prev;
+		*s = (*s)->next;
+		_prev->next = *s;
+		(*s)->prev = _prev;
+		(*s)->index = index;
+		tmp = (*s)->next;
+		index_fill(&tmp, index);
+		free(_curr);
+		return ;
 	}
 	free(_curr);
+	(*s) = NULL;
 }

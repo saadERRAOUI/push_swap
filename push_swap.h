@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 12:36:41 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/12 23:46:29 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,41 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include "ft_printf.h"
 
-//define the struct of the stack
-/*
-	head : {0, 0, next} -> {3, 1, next} -> {5, 2, next} -> {3, 3, next} -> {-4, 4, head};
-*/
-typedef struct		s_stack
+typedef struct s_stack
 {
 	int					content;
 	int					index;
 	struct s_stack		*prev;
 	struct s_stack		*next;
-	
 }					t_stack;
 
-typedef struct		s_pile
+typedef struct s_pile
 {
 	t_stack				*a;
 	t_stack				*b;
 }					t_pile;
 
-int			ft_atoi_check(const char *, int *);
-int			ft_strcmp(const char *, const char *);
+int			ft_atoi_check(const char *str, int *number);
+int			ft_strcmp(const char *s1, const char *s2);
 int			get_max_index(t_stack *a);
-void		ft_lstadd_back(t_stack **, t_stack *);
-void		ft_lstadd_front(t_stack **, t_stack *);
-void		swap_stack(t_stack *);
-void		rot_stack(t_stack *);
+void		index_fill(t_stack **tmp, int index);
+void		ft_lstadd_back(t_stack **s, t_stack *new);
+void		ft_lstadd_front(t_stack **s, t_stack *new);
+void		swap_stack(t_stack *s);
+void		rot_stack(t_stack *s);
 void		rev_rot_stack(t_stack *s);
-void		rm_stack(t_stack **, int *);
+void		rm_stack(t_stack **s, int *content);
 void		rot_stack_orch(t_stack *a, t_stack *b, char c);
 void		rev_rot_stack_orch(t_stack *a, t_stack *b, char c);
 void		swap_stack_orch(t_stack *a, t_stack *b, char c);
 void		push_stack(t_stack **s, t_stack **d, char c);
 void		ft_sort(t_stack *a, t_stack *b, int len);
-t_stack		*ft_lstlast(t_stack *);
+void		ft_sort_medium(t_stack *a, t_stack *b, int len, int flag);
+void		ft_sort_small(t_stack *a, t_stack *b, int len);
+void		bubble_sort(int *arr, int n);
+t_stack		*ft_lstlast(t_stack *s);
+void		print_stack(t_stack *s, char c);
 
-
-/*to delete*/
-void	print_stack(t_stack *s, char c);
 #endif
