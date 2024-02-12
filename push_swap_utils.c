@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/01/29 01:14:20 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:52:43 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,47 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	if (!lst || !new)
+	if (!new)
 		return ;
+	// if (!(*lst))
+	// {
+	// 	printf("ENTERS HEEERE ###!\n\n");
+	// 	(*lst) = new;
+	// 	(*lst)->next = new;
+	// 	(*lst)->prev = new;
+	// }
 	if (!(*lst))
 	{
 		new->prev = new;
 		new->next = new;
 		new->index = 0;
-		*lst = new;
+		(*lst) = new;
 		return ;
 	}
 	ft_lstadd_back(lst, new);
 	rev_rot_stack((*lst));
+}
+
+int get_max_index(t_stack *a)
+{
+	int 	max_i;
+	int		max_c;
+	int 	flag;
+	t_stack *tmp;
+	
+	tmp = a;
+	flag = 0;
+	max_c = a->content;
+	max_i = a->index;
+	while ((a->next != tmp && !flag) || (a != tmp && flag))
+	{
+		if (a->content > max_c)
+		{
+			max_c = a->content;
+			max_i = a->index;
+		}
+		a = a->next;
+		flag = 1;
+	}
+	return (max_i);
 }

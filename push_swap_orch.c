@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:47:35 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/04 23:14:42 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:20:26 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	print_stack(t_stack *s, char c)
 	t_stack *tmp;
 
 	printf("\n___STACK %c\n\n", c);
+	if (!s) return ;
 	printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", s->content, s->index, s, s->prev, s->next);
 	tmp = s->next;
 	while (tmp && tmp != s)

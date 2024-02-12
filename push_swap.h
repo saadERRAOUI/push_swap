@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/04 23:06:01 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:36:41 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_pile
 
 int			ft_atoi_check(const char *, int *);
 int			ft_strcmp(const char *, const char *);
+int			get_max_index(t_stack *a);
 void		ft_lstadd_back(t_stack **, t_stack *);
 void		ft_lstadd_front(t_stack **, t_stack *);
 void		swap_stack(t_stack *);
@@ -48,6 +49,7 @@ void		rot_stack_orch(t_stack *a, t_stack *b, char c);
 void		rev_rot_stack_orch(t_stack *a, t_stack *b, char c);
 void		swap_stack_orch(t_stack *a, t_stack *b, char c);
 void		push_stack(t_stack **s, t_stack **d, char c);
+void		ft_sort(t_stack *a, t_stack *b, int len);
 t_stack		*ft_lstlast(t_stack *);
 
 

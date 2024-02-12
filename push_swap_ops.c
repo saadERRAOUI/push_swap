@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/04 23:24:23 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/11 02:09:04 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,18 @@ void	rm_stack(t_stack **s, int *content)
 	t_stack *_prev;
 	t_stack *_curr;
 	t_stack *tmp;
-	int index;
+	int		index;
 
 	if (!s || !(*s))
 		return ;
+	if ((*s)->prev->index == 0)
+	{
+		_curr = (*s);
+		*content = (*s)->content;
+		free(_curr);
+		(*s) = NULL;
+		return ;
+	}
 	index = 0;
 	*content = (*s)->content;
 	_curr = *s;
@@ -86,7 +94,7 @@ void	rm_stack(t_stack **s, int *content)
 	(*s)->prev = _prev;
 	(*s)->index = index;
 	tmp = (*s)->next;
-	while (tmp->index != 0)
+	while (tmp && tmp->index != 0)
 	{
 		tmp->index = ++index;
 		tmp = tmp->next;
