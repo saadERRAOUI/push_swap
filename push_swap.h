@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 23:46:29 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/13 00:58:55 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_pile
 }					t_pile;
 
 int			ft_atoi_check(const char *str, int *number);
+int			count_words(char const *s, char c);
 int			ft_strcmp(const char *s1, const char *s2);
 int			get_max_index(t_stack *a);
 void		index_fill(t_stack **tmp, int index);
@@ -50,6 +51,9 @@ void		ft_sort(t_stack *a, t_stack *b, int len);
 void		ft_sort_medium(t_stack *a, t_stack *b, int len, int flag);
 void		ft_sort_small(t_stack *a, t_stack *b, int len);
 void		bubble_sort(int *arr, int n);
+char		**ft_split(char const *s, char c);
+char		*ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlen(const char *s);
 t_stack		*ft_lstlast(t_stack *s);
 void		print_stack(t_stack *s, char c);
 

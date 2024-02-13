@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 22:42:18 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/13 01:18:52 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static t_stack	*fill_stack(int ac, char **av)
 	t_stack	*tmp;
 	t_stack	*node;
 
-	i = 0;
+	i = -1;
 	a = NULL;
 	while (++i < ac)
 	{
 		ft_atoi_check(av[i], &nbr);
 		node = (t_stack *)malloc(sizeof(t_stack));
-		(*node) = (t_stack){nbr, i - 1, NULL, NULL};
+		(*node) = (t_stack){nbr, i, NULL, NULL};
 		ft_lstadd_back(&a, node);
 	}
 	tmp = ft_lstlast(a);
@@ -83,12 +83,28 @@ static int	check_occurrence(char **av)
 	return (1);
 }
 
+static char	**strip_args(int ac, char **av, int *nbr)
+{
+	char	*s;
+	int		i;
+
+	i = 0;
+	s = NULL;
+	while (++i < ac)
+	{
+		s = ft_strjoin(s, " ");
+		s = ft_strjoin(s, av[i]);
+	}
+	(*nbr) = count_words(s, ' ');
+	return (ft_split(s, ' '));
+}
+
 static int	validate_stack(char **av, int ac)
 {
 	int	i;
 	int	nbr;
 
-	i = 1;
+	i = 0;
 	while (av[i] && ft_atoi_check(av[i], &nbr))
 		i++;
 	return (i == ac);
@@ -98,13 +114,16 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**s;
+	int		_ac;
 
 	b = NULL;
 	if (ac > 1)
 	{
-		if (validate_stack(av, ac) && check_occurrence(av))
+		s = strip_args(ac, av, &_ac);
+		if (validate_stack(s, _ac) && check_occurrence(s))
 		{
-			a = fill_stack(ac, av);
+			a = fill_stack(_ac, s);
 			if (ft_is_sorted(a))
 				exit(0);
 			if (a->prev->index <= 4)
