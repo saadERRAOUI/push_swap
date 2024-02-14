@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 16:58:22 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/13 09:53:24 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_atoi_check(const char *str, int *number)
 			sign = -1;
 		i++;
 	}
+	if (!ft_isdigit(str[i]))
+		return (0);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
@@ -41,8 +43,7 @@ int	ft_atoi_check(const char *str, int *number)
 			return (-1);
 		(*number) = (*number) * 10 + str[i++] - '0';
 	}
-	(*number) *= sign;
-	return (1);
+	return ((*number) *= sign, 1);
 }
 
 t_stack	*ft_lstlast(t_stack *st)
