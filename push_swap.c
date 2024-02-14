@@ -6,108 +6,44 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/13 01:18:52 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:27:55 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_is_sorted(t_stack *s)
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	free_on_exit(t_stack *a)
 {
 	t_stack	*tmp;
-	t_stack	*needle;
+	t_stack	*_tmp;
 	int		flag;
 
-	tmp = s;
+	_tmp = a;
 	flag = 0;
 	while (
-		(tmp->next && tmp->next != s && !flag)
-		|| (tmp && tmp != s && flag)
+		(_tmp == a && flag == 0)
+		|| (_tmp != a && flag == 1)
 	)
 	{
-		needle = s;
-		while (needle != tmp)
-		{
-			if (needle->content > tmp->content)
-				return (0);
-			needle = needle->next;
-		}
-		tmp = tmp->next;
 		flag = 1;
+		tmp = a;
+		a = a->next;
+		free(tmp);
+		tmp = NULL;
 	}
-	return (1);
-}
-
-static t_stack	*fill_stack(int ac, char **av)
-{
-	int		i;
-	int		nbr;
-	t_stack	*a;
-	t_stack	*tmp;
-	t_stack	*node;
-
-	i = -1;
 	a = NULL;
-	while (++i < ac)
-	{
-		ft_atoi_check(av[i], &nbr);
-		node = (t_stack *)malloc(sizeof(t_stack));
-		(*node) = (t_stack){nbr, i, NULL, NULL};
-		ft_lstadd_back(&a, node);
-	}
-	tmp = ft_lstlast(a);
-	a->prev = tmp;
-	tmp->next = a;
-	return (a);
-}
-
-static int	check_occurrence(char **av)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (av[i])
-	{
-		j = 0;
-		if (!ft_strcmp(av[i], "-0") || !ft_strcmp(av[i], "+0"))
-			av[i] = "0";
-		while (av[j])
-		{
-			if (!ft_strcmp(av[i], av[j]) && i != j)
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-static char	**strip_args(int ac, char **av, int *nbr)
-{
-	char	*s;
-	int		i;
-
-	i = 0;
-	s = NULL;
-	while (++i < ac)
-	{
-		s = ft_strjoin(s, " ");
-		s = ft_strjoin(s, av[i]);
-	}
-	(*nbr) = count_words(s, ' ');
-	return (ft_split(s, ' '));
-}
-
-static int	validate_stack(char **av, int ac)
-{
-	int	i;
-	int	nbr;
-
-	i = 0;
-	while (av[i] && ft_atoi_check(av[i], &nbr))
-		i++;
-	return (i == ac);
 }
 
 int	main(int ac, char **av)
@@ -124,13 +60,12 @@ int	main(int ac, char **av)
 		if (validate_stack(s, _ac) && check_occurrence(s))
 		{
 			a = fill_stack(_ac, s);
+			if (!a)
+				return (ft_printf("Error\n"), 0);
 			if (ft_is_sorted(a))
-				exit(0);
+				free_on_exit(a);
 			if (a->prev->index <= 4)
-			{
 				ft_sort_small(a, b, a->prev->index + 1);
-				return (1);
-			}
 			else
 				ft_sort(a, b, a->prev->index + 1);
 		}

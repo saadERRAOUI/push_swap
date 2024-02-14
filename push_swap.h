@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/13 00:58:55 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:24:07 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int			ft_atoi_check(const char *str, int *number);
 int			count_words(char const *s, char c);
 int			ft_strcmp(const char *s1, const char *s2);
 int			get_max_index(t_stack *a);
+int			ft_is_sorted(t_stack *s);
+int			validate_stack(char **av, int ac);
+int			check_occurrence(char **av);
+size_t		ft_strlen(const char *s);
 void		index_fill(t_stack **tmp, int index);
 void		ft_lstadd_back(t_stack **s, t_stack *new);
 void		ft_lstadd_front(t_stack **s, t_stack *new);
@@ -53,8 +57,10 @@ void		ft_sort_small(t_stack *a, t_stack *b, int len);
 void		bubble_sort(int *arr, int n);
 char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char const *s1, char const *s2);
-size_t		ft_strlen(const char *s);
-t_stack		*ft_lstlast(t_stack *s);
+char		**strip_args(int ac, char **av, int *nbr);
+void		free_on_exit(t_stack *a);
 void		print_stack(t_stack *s, char c);
+t_stack		*ft_lstlast(t_stack *s);
+t_stack		*fill_stack(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 16:45:43 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:36:57 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_sort_small(t_stack *a, t_stack *b, int len)
 	if (len == 2)
 	{
 		swap_stack_orch(a, NULL, 'a');
-		exit(0);
+		free_on_exit(a);
 	}
 	else if (len == 3)
 	{
@@ -71,7 +71,7 @@ void	ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
 		push_stack(&b, &a, 'b');
 		rot_stack_orch(a, b, 'a');
 	}
-	exit(0);
+	free_on_exit(a);
 }
 
 int	get_max_index(t_stack *a)

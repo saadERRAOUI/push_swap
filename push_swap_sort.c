@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:13:51 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 17:54:59 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:36:57 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	ft_sort(t_stack *a, t_stack *b, int len)
 	push_sort_b(&a, &b);
 	free(tab);
 	tab = NULL;
+	free_on_exit(a);
 }
