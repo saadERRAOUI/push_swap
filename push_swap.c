@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/14 15:27:55 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:03:27 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	main(int ac, char **av)
 			a = fill_stack(_ac, s);
 			if (!a)
 				return (ft_printf("Error\n"), 0);
-			if (ft_is_sorted(a))
+			else if (ft_is_sorted(a))
 				free_on_exit(a);
-			if (a->prev->index <= 4)
+			else if (a->prev->index <= 4)
 				ft_sort_small(a, b, a->prev->index + 1);
 			else
 				ft_sort(a, b, a->prev->index + 1);
