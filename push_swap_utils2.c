@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 14:28:19 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:29:32 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_sort_small(t_stack *a, t_stack *b, int len)
 	else if (len == 3)
 	{
 		max_index = get_max_index(a);
-		printf("ENTERS HERE %i\n", max_index);
 		if (max_index == 1)
 			rev_rot_stack_orch(a, NULL, 'a');
 		else if (max_index == 0)
