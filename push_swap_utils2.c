@@ -6,15 +6,18 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 14:29:32 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:21:51 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_hndl_m_s(t_stack *a, int max_index)
+static void	ft_hndl_m_s(t_stack *a, int max_index, int flag)
 {
-	if (max_index == 4 || max_index == 3 || max_index == 2)
+	if (max_index == 4
+		|| (max_index == 3 && flag)
+		|| (max_index == 2 && flag)
+	)
 		rev_rot_stack_orch(a, NULL, 'a');
 	if (max_index == 3 || max_index == 2)
 		rev_rot_stack_orch(a, NULL, 'a');
@@ -55,12 +58,12 @@ void	ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
 	max_index = get_max_index(a);
 	if (len == 4 || (flag == 0 && len == 5))
 	{
-		ft_hndl_m_s(a, max_index);
+		ft_hndl_m_s(a, max_index, 0);
 		push_stack(&a, &b, 'b');
 	}
 	else if (len == 5)
 	{
-		ft_hndl_m_s(a, max_index);
+		ft_hndl_m_s(a, max_index, 1);
 		push_stack(&a, &b, 'b');
 		ft_sort_medium(a, b, 5, 0);
 	}
