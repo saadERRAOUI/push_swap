@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:13:51 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/14 14:36:57 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:53:34 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ static void	push_sort_a(t_stack **a, t_stack **b, int *tab)
 		{
 			if ((*a)->content < tab[start])
 			{
-				push_stack(a, b, 'a');
+				push_stack(a, b, 'b');
 				rot_stack_orch(NULL, (*b), 'b');
 			}
 			else
-				push_stack(a, b, 'a');
+				push_stack(a, b, 'b');
 			start++;
 			if (end < _len)
 				end++;
@@ -61,14 +61,14 @@ static void	push_sort_b(t_stack **a, t_stack **b)
 		{
 			while (_max--)
 				rot_stack_orch(NULL, (*b), 'b');
-			push_stack(b, a, 'b');
+			push_stack(b, a, 'a');
 		}
 		else if (_max >= ((*b)->prev->index + 1) / 2)
 		{
 			_max -= ((*b)->prev->index + 1);
 			while (_max++)
 				rev_rot_stack_orch(NULL, (*b), 'b');
-			push_stack(b, a, 'b');
+			push_stack(b, a, 'a');
 		}
 	}
 }

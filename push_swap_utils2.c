@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/14 14:36:57 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:28:19 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ void	ft_sort_small(t_stack *a, t_stack *b, int len)
 	else if (len == 3)
 	{
 		max_index = get_max_index(a);
+		printf("ENTERS HERE %i\n", max_index);
 		if (max_index == 1)
 			rev_rot_stack_orch(a, NULL, 'a');
 		else if (max_index == 0)
 			rot_stack_orch(a, NULL, 'a');
-		swap_stack_orch(a, NULL, 'a');
+		if (a->content > a->next->content)
+			swap_stack_orch(a, NULL, 'a');
 		return ;
 	}
 }
@@ -55,23 +57,24 @@ void	ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
 	if (len == 4 || (flag == 0 && len == 5))
 	{
 		ft_hndl_m_s(a, max_index);
-		push_stack(&a, &b, 'a');
+		push_stack(&a, &b, 'b');
 	}
 	else if (len == 5)
 	{
 		ft_hndl_m_s(a, max_index);
-		push_stack(&a, &b, 'a');
+		push_stack(&a, &b, 'b');
 		ft_sort_medium(a, b, 5, 0);
 	}
 	ft_sort_small(a, b, 3);
-	push_stack(&b, &a, 'b');
+	push_stack(&b, &a, 'a');
 	rot_stack_orch(a, b, 'a');
 	if (len == 5)
 	{
-		push_stack(&b, &a, 'b');
+		push_stack(&b, &a, 'a');
 		rot_stack_orch(a, b, 'a');
 	}
 	free_on_exit(a);
+	exit(0);
 }
 
 int	get_max_index(t_stack *a)
