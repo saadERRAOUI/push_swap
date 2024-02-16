@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 20:21:51 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:38:13 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_sort_small(t_stack *a, t_stack *b, int len)
 			rot_stack_orch(a, NULL, 'a');
 		if (a->content > a->next->content)
 			swap_stack_orch(a, NULL, 'a');
+		free_on_exit(a);
 		return ;
 	}
 }

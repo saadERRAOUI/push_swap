@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 00:13:18 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 20:02:05 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:27:34 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	check_occurrence(char **av)
 	int	j;
 
 	i = 0;
+	if (!av)
+		return (0);
 	while (av[i])
 	{
 		j = 0;
@@ -98,6 +100,8 @@ char	**strip_args(int ac, char **av, int *nbr)
 	s = NULL;
 	while (++i < ac)
 	{
+		if (!is_all_blank(av[i]))
+			return (NULL);
 		s = ft_strjoin(s, " ");
 		s = ft_strjoin(s, av[i]);
 	}
@@ -111,6 +115,8 @@ int	validate_stack(char **av, int ac)
 	int	nbr;
 
 	i = 0;
+	if (!av)
+		return (0);
 	while (av[i] && ft_atoi_check(av[i], &nbr))
 		i++;
 	return (i == ac);

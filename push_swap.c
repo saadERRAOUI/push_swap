@@ -6,11 +6,23 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 10:03:27 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:32:18 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_all_blank(char *s)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	while (s[i] && s[i] != ' ')
+		i++;
+	len = (int)ft_strlen(s);
+	return ((len == i) && len);
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -46,7 +58,7 @@ void	free_on_exit(t_stack *a)
 	a = NULL;
 }
 
-int	main(int ac, char **av)
+int	ft_e(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;

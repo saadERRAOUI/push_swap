@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/14 15:24:07 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 12:19:31 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			get_max_index(t_stack *a);
 int			ft_is_sorted(t_stack *s);
 int			validate_stack(char **av, int ac);
 int			check_occurrence(char **av);
+int			is_all_blank(char *s);
 size_t		ft_strlen(const char *s);
 void		index_fill(t_stack **tmp, int index);
 void		ft_lstadd_back(t_stack **s, t_stack *new);
