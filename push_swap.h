@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 21:12:27 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:37:22 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 char		**strip_args(int ac, char **av, int *nbr);
 void		free_on_exit(t_stack *a);
 void		print_stack(t_stack *s, char c);
+void		free_s(char **s, int _ac);
 t_stack		*ft_lstlast(t_stack *s);
 t_stack		*fill_stack(int ac, char **av);
 

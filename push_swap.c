@@ -6,13 +6,19 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/17 00:00:13 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:36:43 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+static void	sort_small_hndl(t_stack *a, t_stack *b, int len)
+{
+	ft_sort_small(a, b, len);
+	free_on_exit(a);
+}
+
+int	ft_e(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -31,15 +37,18 @@ int	main(int ac, char **av)
 			else if (ft_is_sorted(a))
 				free_on_exit(a);
 			else if (a->prev->index <= 4)
-			{
-				ft_sort_small(a, b, a->prev->index + 1);
-				free_on_exit(a);
-			}
+				sort_small_hndl(a, b, a->prev->index + 1);
 			else
 				ft_sort(a, b, a->prev->index + 1);
 		}
 		else
-			ft_printf("Error\n");
+			return (free_s(s, _ac), ft_printf("Error\n"), 0);
 	}
 	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	ft_e(ac, av);
+	system("leaks push_swap");
 }

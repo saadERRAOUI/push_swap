@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:47:35 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 22:40:49 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:38:11 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,19 @@ void	index_fill(t_stack **tmp, int index)
 /* //! ********************************************** /
 	!TO REMOVE 
 */ //! ********************************************** /
-void	print_stack(t_stack *s, char c)
-{
-	t_stack *tmp;
+// void	print_stack(t_stack *s, char c)
+// {
+// 	t_stack *tmp;
 
-	printf("\n___STACK %c\n\n", c);
-	if (!s) return ;
-	printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", s->content, s->index, s, s->prev, s->next);
-	tmp = s->next;
-	while (tmp && tmp != s)
-	{
-		printf("content: %i, index: %i, addr: %p, prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
-		tmp = tmp->next;
-	}
-}
+// 	printf("\n___STACK %c\n\n", c);
+// 	if (!s) return ;
+// 	printf("content: %i, index: %i, addr: %p, 
+//prev: %p, next: %p\n", s->content, s->index, s, s->prev, s->next);
+// 	tmp = s->next;
+// 	while (tmp && tmp != s)
+// 	{
+// 		printf("content: %i, index: %i, addr: %p, 
+//prev: %p, next: %p\n", tmp->content, tmp->index, tmp, tmp->prev, tmp->next);
+// 		tmp = tmp->next;
+// 	}
+// }

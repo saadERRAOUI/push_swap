@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 22:35:42 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 22:36:21 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:38:51 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,18 @@ void	free_on_exit(t_stack *a)
 		tmp = NULL;
 	}
 	a = NULL;
+}
+
+void	free_s(char **s, int _ac)
+{
+	int	i;
+
+	i = -1;
+	while (++i < _ac)
+	{
+		free(s[i]);
+		s[i] = NULL;
+	}
+	free(s);
+	s = NULL;
 }
