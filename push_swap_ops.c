@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 23:41:12 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:05:24 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	push_stack(t_stack **s, t_stack **d, char c)
 	int		nbr;
 	t_stack	*tmp;
 
-	ft_printf("p%c\n", c);
+	if (c == 'a' || c == 'b')
+		ft_printf("p%c\n", c);
 	rm_stack(s, &nbr);
 	tmp = (t_stack *)malloc(sizeof(t_stack));
 	tmp->content = nbr;

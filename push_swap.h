@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:12:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 12:19:31 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/16 21:12:27 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ typedef struct s_stack
 	struct s_stack		*prev;
 	struct s_stack		*next;
 }					t_stack;
-
-typedef struct s_pile
-{
-	t_stack				*a;
-	t_stack				*b;
-}					t_pile;
 
 int			ft_atoi_check(const char *str, int *number);
 int			count_words(char const *s, char c);

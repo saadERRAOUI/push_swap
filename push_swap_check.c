@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 00:13:18 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 12:27:34 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/17 00:15:12 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	ft_is_sorted(t_stack *s)
 
 	tmp = s;
 	flag = 0;
+	if (!s)
+		return (0);
 	while (
 		(tmp->next && tmp->next != s && !flag)
 		|| (tmp && tmp != s && flag)
