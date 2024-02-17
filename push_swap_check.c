@@ -71,8 +71,8 @@ t_stack	*fill_stack(int ac, char **av)
 
 int	check_occurrence(char **av)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	if (!av)
@@ -81,7 +81,12 @@ int	check_occurrence(char **av)
 	{
 		j = 0;
 		if (!ft_strcmp(av[i], "-0") || !ft_strcmp(av[i], "+0"))
-			av[i] = "0";
+		{
+			free(av[i]);
+			av[i] = malloc(2 * sizeof(char));
+			av[i][0] = '0';
+			av[i][1] = '\0';
+		}
 		while (av[j])
 		{
 			if (!ft_strcmp(av[i], av[j]) && i != j)

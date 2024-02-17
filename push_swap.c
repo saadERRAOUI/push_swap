@@ -18,7 +18,7 @@ static void	sort_small_hndl(t_stack *a, t_stack *b, int len)
 	free_on_exit(a);
 }
 
-int	ft_e(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -45,10 +45,4 @@ int	ft_e(int ac, char **av)
 			return (free_s(s, _ac), ft_printf("Error\n"), 0);
 	}
 	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	ft_e(ac, av);
-	system("leaks push_swap");
 }

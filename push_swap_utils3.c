@@ -18,10 +18,10 @@ int	is_all_blank(char *s)
 	int	len;
 
 	i = 0;
-	while (s[i] && s[i] != ' ')
+	while (s[i] && s[i] == ' ')
 		i++;
 	len = (int)ft_strlen(s);
-	return ((len == i) && len);
+	return ((len != i) && len);
 }
 
 size_t	ft_strlen(const char *s)
@@ -63,6 +63,8 @@ void	free_s(char **s, int _ac)
 	int	i;
 
 	i = -1;
+	if (!s)
+		return ;
 	while (++i < _ac)
 	{
 		free(s[i]);
