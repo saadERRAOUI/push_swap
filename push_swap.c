@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/17 15:36:43 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:01:12 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac > 1)
 	{
+        printf("INT MAX %i\n", INT_MAX);
 		s = strip_args(ac, av, &_ac);
 		if (validate_stack(s, _ac) && check_occurrence(s))
 		{

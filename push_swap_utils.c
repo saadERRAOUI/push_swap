@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/13 09:53:24 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:02:52 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ static int	ft_isdigit(int arg)
 
 int	ft_atoi_check(const char *str, int *number)
 {
-	int		i;
-	int		sign;
+	int	        i;
+	int	        sign;
+    size_t      n;            
 
 	i = 0;
 	sign = 1;
 	(*number) = 0;
+    n = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -37,13 +39,12 @@ int	ft_atoi_check(const char *str, int *number)
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
-		if ((*number) < 0 && sign == -1)
-			return (0);
-		else if ((*number) < 0 && sign == 1)
-			return (-1);
-		(*number) = (*number) * 10 + str[i++] - '0';
+        if (n > INT_MAX)
+            return (0);
+		n = n * 10 + str[i++] - '0';
+        printf("___N %zu\n", n);
 	}
-	return ((*number) *= sign, 1);
+	return ((*number) = n * sign, 1);
 }
 
 t_stack	*ft_lstlast(t_stack *st)

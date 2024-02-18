@@ -6,23 +6,11 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:52:30 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 22:34:22 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 20:42:04 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// size_t	ft_strlen(const char *s)
-// {
-// 	size_t	i;
-
-// 	if (!s)
-// 		return (0);
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
 
 char	*ft_strdup(const char *s1)
 {
@@ -81,29 +69,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-// char	*ft_strjoin(char const *s1, char const *s2)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*s;
-
-// 	s = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-// 	if (!s)
-// 		return (NULL);
-// 	i = 0;
-// 	while (s1 && s1[i])
-// 	{
-// 		s[i] = s1[i];
-// 		i++;
-// 	}
-// 	j = 0;
-// 	while (s2 && s2[j])
-// 	{
-// 		s[i + j] = s2[j];
-// 		j++;
-// 	}
-// 	s[i + j] = 0;
-// 	free ((void *)s1);
-// 	return (s);
-// }

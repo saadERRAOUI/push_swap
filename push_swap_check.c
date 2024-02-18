@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 00:13:18 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 14:02:36 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 21:36:19 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,20 @@ int	check_occurrence(char **av)
 {
 	int		i;
 	int		j;
+	int     nbr1;
+	int     nbr2;
 
 	i = 0;
 	if (!av)
 		return (0);
 	while (av[i])
 	{
+		ft_atoi_check(av[i], &nbr1);
 		j = 0;
-		if (!ft_strcmp(av[i], "-0") || !ft_strcmp(av[i], "+0"))
-		{
-			free(av[i]);
-			av[i] = malloc(2 * sizeof(char));
-			av[i][0] = '0';
-			av[i][1] = '\0';
-		}
 		while (av[j])
 		{
-			if (!ft_strcmp(av[i], av[j]) && i != j)
+			ft_atoi_check(av[j], &nbr2);
+			if ((nbr2 == nbr1) && (i != j))
 				return (0);
 			j++;
 		}
