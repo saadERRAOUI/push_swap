@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 00:13:18 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 21:36:19 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:33:20 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,15 @@ t_stack	*fill_stack(int ac, char **av)
 	tmp = ft_lstlast(a);
 	a->prev = tmp;
 	tmp->next = a;
-	free(av);
-	av = NULL;
-	return (a);
+	return (free(av), av = NULL, a);
 }
 
 int	check_occurrence(char **av)
 {
 	int		i;
 	int		j;
-	int     nbr1;
-	int     nbr2;
+	int		nbr1;
+	int		nbr2;
 
 	i = 0;
 	if (!av)
