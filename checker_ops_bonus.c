@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_checker_ops.c                                :+:      :+:    :+:   */
+/*   checker_ops_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 21:18:12 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/17 15:28:02 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:49:50 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 int	rot_ops(t_stack **a, t_stack **b, char *s)
 {

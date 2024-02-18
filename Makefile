@@ -7,7 +7,7 @@ CHECKER = checker
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 
 #######################################################
 # MANDATORY     									  #
@@ -53,7 +53,7 @@ $(OUTPUT_DIR)/%.o: ft_printf/%.c
 # BONUS 											  #
 #######################################################
 B_SOURCES = push_swap_utils3.c push_swap_check.c push_swap_func.c push_swap_utils2.c push_swap_orch.c push_swap_sort.c push_swap_utils.c push_swap_ops.c \
-get_next_line.c get_next_line_utils.c checker.c bonus_checker_ops.c
+get_next_line.c get_next_line_utils.c checker_bonus.c checker_ops_bonus.c
 
 B_OBJECTS = $(B_SOURCES:.c=.o)
 
