@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 21:17:04 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/12 23:50:31 by serraoui         ###   ########.fr       */
+/*   Created: 2023/11/14 17:32:39 by serraoui          #+#    #+#             */
+/*   Updated: 2023/11/18 16:50:30 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putstr(char *s, int *len)
+{
+	int	i;
 
-void	ft_print_base(unsigned long long n, const char *c, int b, int *l);
-void	ft_putchar(char c, int *len);
-void	ft_putnbr(int n, int *len);
-int		ft_printf(const char *s, ...);
-void	ft_putstr(char *s, int *len);
-
-#endif
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		(*len)++;
+		i++;
+	}
+	return (1);
+}

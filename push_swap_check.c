@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 00:13:18 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/17 00:15:12 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:02:36 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ t_stack	*fill_stack(int ac, char **av)
 	{
 		ft_atoi_check(av[i], &nbr);
 		node = (t_stack *)malloc(sizeof(t_stack));
+		if (!node)
+			return (NULL);
 		(*node) = (t_stack){nbr, i, NULL, NULL};
 		ft_lstadd_back(&a, node);
 		free(av[i]);

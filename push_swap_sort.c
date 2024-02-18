@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:13:51 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/15 12:53:34 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:03:59 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static void	fill_tab(t_stack *a, int **tab, int l)
 
 	i = 0;
 	(*tab) = (int *)malloc(sizeof(int) * l);
+	if (!(*tab))
+		return ;
 	while (i < l)
 	{
 		(*tab)[i] = a->content;

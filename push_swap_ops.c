@@ -6,7 +6,7 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/16 23:05:24 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:03:36 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	push_stack(t_stack **s, t_stack **d, char c)
 		ft_printf("p%c\n", c);
 	rm_stack(s, &nbr);
 	tmp = (t_stack *)malloc(sizeof(t_stack));
+	if (!tmp)
+		return ;
 	tmp->content = nbr;
 	ft_lstadd_front(d, tmp);
 }
