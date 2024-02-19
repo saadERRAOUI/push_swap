@@ -38,7 +38,7 @@ OUTPUT_DIR = ft_printf
 
 PTF_SOURCES = ft_printf/ft_print_base.c ft_printf/ft_printf.c ft_printf/ft_putchar.c ft_printf/ft_putnbr.c ft_printf/ft_putstr.c
 
-PTF_OBJECTS = $(patsubst ft_printf/%.c, $(OUTPUT_DIR)/%.o, $(PTF_SOURCES))
+PTF_OBJECTS = $(PTF_SOURCES:.c=.o)
 
 PRINTF = libftprintf.a
 
