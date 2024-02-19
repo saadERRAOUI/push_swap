@@ -6,12 +6,20 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 00:45:28 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 14:03:36 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:57:29 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void push_stack(t_stack **, t_stack **, char);
+	@__DESC   : utility function to push the first element of the t_stack *s
+		source to the t_stack *d destination and prints the operation using 
+		the passed char c (either "a" or "b").
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	push_stack(t_stack **s, t_stack **d, char c)
 {
 	int		nbr;
@@ -27,6 +35,13 @@ void	push_stack(t_stack **s, t_stack **d, char c)
 	ft_lstadd_front(d, tmp);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void swap_stack(t_stack *);
+	@__DESC   : utility function to swap the two first elements of the
+		t_stack *s.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	swap_stack(t_stack *s)
 {
 	int	tmp;
@@ -36,6 +51,13 @@ void	swap_stack(t_stack *s)
 	s->next->content = tmp;
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void rot_stack(t_stack *);
+	@__DESC   : utility function to rotate the first element of the
+		t_stack *s to be the last one on the stack.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	rot_stack(t_stack *s)
 {
 	t_stack	*tmp;
@@ -51,6 +73,13 @@ void	rot_stack(t_stack *s)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void rev_rot_stack(t_stack *);
+	@__DESC   : utility function to reverse rotate the last element of the
+		t_stack *s to be the first one on the stack.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	rev_rot_stack(t_stack *s)
 {
 	t_stack	*tmp;
@@ -66,6 +95,13 @@ void	rev_rot_stack(t_stack *s)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void rm_stack(t_stack *, int);
+	@__DESC   : utility function to remove (free) the first node of the 
+		t_stack *s and put its content property value in the int *content.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	rm_stack(t_stack **s, int *content)
 {
 	t_stack	*_prev;

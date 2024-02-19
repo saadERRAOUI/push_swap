@@ -6,12 +6,19 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:15:33 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/14 15:27:23 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:51:05 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : char *ft_strjoin(char const *, char const *);
+	@__DESC   : utility function that joins the 2 passed const char * into
+		one char *.
+	@__DATE   : 05-12-2023
+********************************************************************** */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
@@ -38,6 +45,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : int	count_words(char const *, char);
+	@__DESC   : utility function for the ft_split() returns the count (Int)
+		of the words existing in the const char *s, using the seperator
+		char c.
+	@__DATE   : 05-12-2023
+********************************************************************** */
 int	count_words(char const *s, char c)
 {
 	int	i;
@@ -60,6 +75,14 @@ int	count_words(char const *s, char c)
 	return (chuncks_number);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static int count_word_len(char const *, char );
+	@__DESC   : utility function for the ft_split() returns the len count
+		(Int) of each word existing in the const char *s, using the seperator
+		char c.
+	@__DATE   : 05-12-2023
+********************************************************************** */
 static int	count_word_len(char const *s, char c)
 {
 	int	i;
@@ -77,6 +100,13 @@ static int	count_word_len(char const *s, char c)
 	return (len);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void	*free_allocation(char **, int);
+	@__DESC   : utility function for the ft_split() that frees the allocated
+		memory on the split function.
+	@__DATE   : 05-12-2023
+********************************************************************** */
 static void	*free_allocation(char **s, int count)
 {
 	while (count >= 0)
@@ -89,6 +119,14 @@ static void	*free_allocation(char **s, int count)
 	return (NULL);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : char **ft_split(char const *, char)
+	@__DESC   : utility function that splits a const char *s into seperated
+		words using a char c seperator and returns a char ** value, if any 
+		error occurs during the split the return value is NULL.
+	@__DATE   : 05-12-2023
+********************************************************************** */
 char	**ft_split(char const *s, char c)
 {
 	char	**str;

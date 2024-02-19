@@ -6,18 +6,31 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:34:40 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 22:30:58 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:23:17 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void sort_small_hndl(t_stack *, t_stack *, int);
+	@__DESC   : helper function calls the ft_sort_small() func and frees
+			the a stack
+	@__DATE   : 17-02-2024
+********************************************************************** */
 static void	sort_small_hndl(t_stack *a, t_stack *b, int len)
 {
 	ft_sort_small(a, b, len);
 	free_on_exit(a);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : int	main(int ac, char **av);
+	@__DESC   : main function of the push_swap mandartory part
+	@__DATE   : 05-12-2023
+********************************************************************** */
 int	main(int ac, char **av)
 {
 	t_stack	*a;

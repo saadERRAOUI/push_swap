@@ -6,12 +6,19 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 00:13:51 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 22:31:13 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:36:07 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static int choose_hopp(int);
+	@__DESC   : utility function to choose the hopp reference based on
+		the lenght of the integers table.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 static int	choose_hopp(int len)
 {
 	if (len >= 4 && len <= 19)
@@ -21,6 +28,14 @@ static int	choose_hopp(int len)
 	return (35);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void	push_sort_a(t_stack **, t_stack **, int *);
+	@__DESC   : utility function used in the ft_sort() function to push
+		elements of stack a to stack b based on the reference in the table
+		sorted. 
+	@__DATE   : 05-01-2024
+********************************************************************** */
 static void	push_sort_a(t_stack **a, t_stack **b, int *tab)
 {
 	int	end;
@@ -50,6 +65,14 @@ static void	push_sort_a(t_stack **a, t_stack **b, int *tab)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void	push_sort_b(t_stack **, t_stack **);
+	@__DESC   : utility function used in the ft_sort() function to push the
+		elements on the stack b to a based on getting the max index each time
+		end push it using rotation and push opertations.
+ 	@__DATE   : 05-01-2024
+********************************************************************** */
 static void	push_sort_b(t_stack **a, t_stack **b)
 {
 	int	_max;
@@ -73,6 +96,13 @@ static void	push_sort_b(t_stack **a, t_stack **b)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void	fill_tab(t_stack *, int **, int);
+	@__DESC   : utility function used in the ft_sort() function to fill
+		int **tab by the elements of the t_stack *a passed to it the params.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 static void	fill_tab(t_stack *a, int **tab, int l)
 {
 	int	i;
@@ -90,6 +120,14 @@ static void	fill_tab(t_stack *a, int **tab, int l)
 	bubble_sort((*tab), l);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void index_fill(t_stack **, int);
+	@__DESC   : utility function to implement the sorting algorithm on the
+		elements of the t_stack *a, in case of the number of elements is 
+		greater then 5, and frees the tab and the t_stack *a on exit.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	ft_sort(t_stack *a, t_stack *b, int len)
 {
 	int	*tab;

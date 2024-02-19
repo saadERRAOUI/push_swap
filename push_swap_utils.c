@@ -6,17 +6,32 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:05:59 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 22:30:04 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:43:01 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static int	ft_isdigit(int);
+	@__DESC   : utility function that returns 1 if the arg (ascii) passed 
+		is a digit and 0 if not.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 static int	ft_isdigit(int arg)
 {
 	return (arg >= '0' && arg <= '9');
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : int	ft_atoi_check(const char *, int *);
+	@__DESC   : utility function that checks weither the const char *str
+		is an intger or not, returns 1 if it is the case and 0 if not, and
+		the number takes the int value in its content. 
+	@__DATE   : 10-12-2023
+********************************************************************** */
 int	ft_atoi_check(const char *str, int *number)
 {
 	int		i;
@@ -46,6 +61,13 @@ int	ft_atoi_check(const char *str, int *number)
 	return ((*number) = n * sign, 1);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : t_stack	*ft_lstlast(t_stack *st);
+	@__DESC   : utility function that returns the last node of the 
+		t_stack *st.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 t_stack	*ft_lstlast(t_stack *st)
 {
 	t_stack	*tmp;
@@ -58,6 +80,13 @@ t_stack	*ft_lstlast(t_stack *st)
 	return (st);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void ft_lstadd_back(t_stack **, t_stack *);
+	@__DESC   : utility function that adds the node t_stack *new to the end
+		of the t_stack **lst. 
+	@__DATE   : 10-12-2023
+********************************************************************** */
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*tmp;
@@ -79,6 +108,13 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	new->index = tmp->index + 1;
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void ft_lstadd_front(t_stack **, t_stack *);
+	@__DESC   : utility function that adds the node t_stack *new to the start
+		of the t_stack **lst.  
+	@__DATE   : 10-12-2023
+********************************************************************** */
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!new)

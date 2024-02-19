@@ -6,12 +6,20 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:47:35 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/18 22:31:34 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:04:03 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void rot_stack_orch(t_stack *, t_stack *, int);
+	@__DESC   : utility function to orchestrate the rotation opertations
+		weither to rotate the t_stack *a or t_stack *b or both, and prints
+		the following operation sign.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	rot_stack_orch(t_stack *a, t_stack *b, char c)
 {
 	ft_printf("r%c\n", c);
@@ -26,6 +34,14 @@ void	rot_stack_orch(t_stack *a, t_stack *b, char c)
 		rot_stack(b);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void rev_rot_stack_orch(t_stack *, t_stack *, int);
+	@__DESC   : utility function to orchestrate the reverse rotation 
+		opertations weither to reverse rotate the t_stack *a or 
+		t_stack *b or both, and prints the following operation sign.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	rev_rot_stack_orch(t_stack *a, t_stack *b, char c)
 {
 	ft_printf("rr%c\n", c);
@@ -40,6 +56,14 @@ void	rev_rot_stack_orch(t_stack *a, t_stack *b, char c)
 		rev_rot_stack(b);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void swap_stack_orch(t_stack *, t_stack *, int);
+	@__DESC   : utility function to orchestrate the swap opertations
+		weither to swap the t_stack *a or t_stack *b or both, and prints
+		the following operation sign.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	swap_stack_orch(t_stack *a, t_stack *b, char c)
 {
 	ft_printf("s%c\n", c);
@@ -54,6 +78,13 @@ void	swap_stack_orch(t_stack *a, t_stack *b, char c)
 		swap_stack(b);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void bubble_sort(int *arr, int n);
+	@__DESC   : utility function to bubble sort the int *arr passed in
+		params with its length n.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	bubble_sort(int *arr, int n)
 {
 	int	i;
@@ -76,6 +107,14 @@ void	bubble_sort(int *arr, int n)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void index_fill(t_stack **, int);
+	@__DESC   : utility function to put the appropriate index on each node
+		index property of the t_stack *tmp starting from an index passed
+		in the params.
+	@__DATE   : 05-01-2024
+********************************************************************** */
 void	index_fill(t_stack **tmp, int index)
 {
 	while ((*tmp) && (*tmp)->index != 0)

@@ -6,12 +6,20 @@
 /*   By: serraoui <serraoui@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:02:31 by serraoui          #+#    #+#             */
-/*   Updated: 2024/02/17 15:10:26 by serraoui         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:52:19 by serraoui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : static void	ft_hndl_m_s(t_stack *, int, int);
+	@__DESC   : utility function helper used in the ft_sort_medium()
+		function that execute operations (reverse rotate and swap) based on
+		max content index of all the nodes in the t_stack *a.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 static void	ft_hndl_m_s(t_stack *a, int max_index, int flag)
 {
 	if (max_index == 4
@@ -27,6 +35,13 @@ static void	ft_hndl_m_s(t_stack *a, int max_index, int flag)
 		swap_stack_orch(a, NULL, 'a');
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void ft_sort_small(t_stack *, t_stack *, int);
+	@__DESC   : utility function that sorts the t_stack *a when the length of
+		a is less or equal then 5, calls the ft_sort_medium() when len > 3.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 void	ft_sort_small(t_stack *a, t_stack *b, int len)
 {
 	int	max_index;
@@ -47,6 +62,13 @@ void	ft_sort_small(t_stack *a, t_stack *b, int len)
 	}
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : void ft_sort_medium(t_stack *, t_stack *, int, int)
+	@__DESC   : utility function that sorts the t_stack *a if the len is
+		greater or equal then 4.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 void	ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
 {
 	int	max_index;
@@ -75,6 +97,13 @@ void	ft_sort_medium(t_stack *a, t_stack *b, int len, int flag)
 	exit(0);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : int	get_max_index(t_stack *);
+	@__DESC   : utility function that returns index of the node that has
+		max of all the contents on the t_stack *a.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 int	get_max_index(t_stack *a)
 {
 	int		max_i;
@@ -99,6 +128,14 @@ int	get_max_index(t_stack *a)
 	return (max_i);
 }
 
+/* **********************************************************************
+	@__AUTHOR : ERRAOUI Saad
+	@__PROTO  : int	ft_strcmp(const char *, const char *);
+	@__DESC   : utility function to compare between two strings s1 and s2,
+		return value > 0 if s1 is greater then s2, value < 0 s1 is less
+		then s2 or value == 0 is s1 and s2 are the same.
+	@__DATE   : 10-12-2023
+********************************************************************** */
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
