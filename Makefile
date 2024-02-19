@@ -60,5 +60,5 @@ B_OBJECTS = $(B_SOURCES:.c=.o)
 $(NAME): $(OBJECTS) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJECTS) -L. -lftprintf -o $(NAME)
 
-$(CHECKER): $(B_OBJECTS)
+$(CHECKER): $(B_OBJECTS) $(PRINTF)
 	$(CC) $(CFLAGS) $(B_OBJECTS) -L. -lftprintf -o $(CHECKER)
